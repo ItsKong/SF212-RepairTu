@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "devStart": "nodemon ./src/server.js",
-    "Hosp": "nodemon ./src/hospitalServer"
+    "serve": "node ./src/server.js"
   },
   "keywords": [],
   "author": "",

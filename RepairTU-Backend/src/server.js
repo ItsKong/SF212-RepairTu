@@ -5,6 +5,7 @@ const app = express();
 const Users = require("../models/user");
 const { connectAppDB } = require('./dbconfig');
 const cors = require('cors');
+const path = require('path');
 // const insertRandomUsers = require('../models/insertRandomUsers')
 
 app.use(cors());
@@ -12,6 +13,18 @@ app.use(cors());
 app.use(express.json());
 //connect database
 connectAppDB();
+
+// Serve static files from the dist directory
+app.use(express.static(path.join(__dirname, '../../RepairTU-Frontend/dist')));
+
+// Catch-all route to serve index.html for any other routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../RepairTU-Frontend/dist', 'index.html'));
+});
+
+app.get('/Hello', (req, res) => {
+    res.send('Hello');
+})
 
 app.get('/users', async (req, res) => {
     try {

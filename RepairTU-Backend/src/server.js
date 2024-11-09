@@ -13,6 +13,10 @@ app.use(express.json());
 //connect database
 connectAppDB();
 
+app.get('/Hello', (req, res) => {
+    res.send('Hello');
+})
+
 app.get('/users', async (req, res) => {
     try {
         const users = await Users.find();

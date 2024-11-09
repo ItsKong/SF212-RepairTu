@@ -35,7 +35,7 @@ function Uploadadmin() {
     formData.append('major', value.major);
     formData.append('details', value.details);
 
-    axios.post('http://localhost:3000/api/uploadAdmin', formData, {
+    axios.post('https://repairtu.onrender.com/api/uploadAdmin', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
         Authorization: "Bearer " + localStorage.getItem('accessToken')

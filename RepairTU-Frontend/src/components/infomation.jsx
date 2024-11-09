@@ -11,7 +11,7 @@ function Info() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/upload/${postId}`);
+                const response = await axios.get(`https://repairtu.onrender.com/api/upload/${postId}`);
                 const data = response.data;
                 setPostInfo(data);
             } catch (err) {
@@ -30,7 +30,7 @@ function Info() {
                 <div className="w-full h-[25rem] sm:h-[41rem]  lg:min-h-screen md:w-1/2 flex justify-center items-center bg-gradient-to-l from-[#FF0000] to-[#FFD705] rounded-tr-[2rem] rounded-br-[2rem] ">
                     <div className="w-8/12  sm:w-9/12 h-56 sm:h-80 lg:h-[360px] shadow-[2px_2px_5px_rgba(0,0,0,0.5)] bg-[#340000] rounded-3xl m-5  flex justify-center items-center">
                         {/* ใส่รูปภาพ */}
-                        <img src={ `http://localhost:3000/api/${postInfo.image_path.replace(/\\/g, '/')}` } alt="" className='w-[95%] h-[95%]  rounded-3xl' />
+                        <img src={ `https://repairtu.onrender.com/api/${postInfo.image_path.replace(/\\/g, '/')}` } alt="" className='w-[95%] h-[95%]  rounded-3xl' />
                     </div>
                 </div>
 

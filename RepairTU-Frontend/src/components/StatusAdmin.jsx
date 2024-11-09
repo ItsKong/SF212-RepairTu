@@ -10,7 +10,7 @@ function StatusAdmin() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/upload');
+                const response = await axios.get('https://repairtu.onrender.com/api/upload');
                 const data = response.data;
 
                 const repaired = data.filter(item => item.status === 'repaired');
@@ -94,7 +94,7 @@ function StatusAdmin() {
                                             <div className="w-1/5 flex items-center justify-center">
                                                 <div className="w-20 h-20 rounded-md overflow-hidden border-2 border-gray-300 shadow-lg">
                                                     <img
-                                                        src={`http://localhost:3000/api/${item.image_path.replace(/\\/g, '/')}`}
+                                                        src={`https://repairtu.onrender.com/api/${item.image_path.replace(/\\/g, '/')}`}
                                                         className="w-full h-full object-cover"
                                                         alt="image"
                                                     />
@@ -123,7 +123,7 @@ function StatusAdmin() {
                                             <div className="w-1/5 flex items-center justify-center">
                                                 <div className="w-20 h-20 rounded-md overflow-hidden border-2 border-gray-300 shadow-lg">
                                                     <img
-                                                        src={`http://localhost:3000/api/${item.image_path.replace(/\\/g, '/')}`}
+                                                        src={`https://repairtu.onrender.com/api/${item.image_path.replace(/\\/g, '/')}`}
                                                         className="w-full h-full object-cover"
                                                         alt="image"
                                                     />

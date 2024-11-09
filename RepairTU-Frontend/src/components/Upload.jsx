@@ -36,7 +36,7 @@ function Upload() {
     formData.append('issue', value.issue);
     formData.append('details', value.details);
 
-    axios.post('http://localhost:3000/api/upload', formData, {
+    axios.post('https://repairtu.onrender.com/api/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
         Authorization: "Bearer " + localStorage.getItem('accessToken')

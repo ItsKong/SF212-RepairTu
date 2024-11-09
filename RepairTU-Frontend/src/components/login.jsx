@@ -24,7 +24,7 @@ function Login() {
         event.preventDefault();
         console.log(value);
 
-        axios.post('http://localhost:3000/api/login', value)
+        axios.post( 'https://repairtu.onrender.com/api/login' , value)
             .then((response) => {
                 console.log('Success', response.data);
                 // alert('Success')

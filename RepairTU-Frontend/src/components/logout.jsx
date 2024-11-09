@@ -6,7 +6,7 @@ function Logout() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.post("http://localhost:3000/api/logout", {}, { timeout: 5000 })
+        axios.post("https://repairtu.onrender.com/api/logout", {}, { timeout: 5000 })
             .then(response => {
                 console.log(response.data.message);
                 localStorage.removeItem('accessToken');

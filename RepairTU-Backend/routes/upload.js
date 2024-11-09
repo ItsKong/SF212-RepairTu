@@ -6,7 +6,6 @@ const multer = require('multer')
 const fs = require('fs');
 const path = require('path');
 const router = express();
-const asd = multer();
 
 //multer config
 const storage = multer.diskStorage({
@@ -25,7 +24,7 @@ const storage = multer.diskStorage({
             return fs.existsSync(filePath);
         }
 
-        while(checkFileExist(newFilename)) {
+        while (checkFileExist(newFilename)) {
             newFilename = baseName + "_" + req.user.userId + `(${count})` + fileExtension;
             count++;
         }
@@ -47,18 +46,18 @@ router.post('/upload', authenticateToken, upload.array('image'), async (req, res
     const request = req.body;
     try {
         const insertData = await UploadM.insertMany(request);
-        console.log("insertData Success\n"+insertData);
-        res.status(201).json({ message: "success"});
+        console.log("insertData Success\n" + insertData);
+        res.status(201).json({ message: "success" });
     } catch (err) {
         console.error(err);
         res.status(500);
     }
 })
 
-router.post('/uploadAdmin', authenticateToken, upload.array('image'),async (req, res) => {
+router.post('/uploadAdmin', authenticateToken, upload.array('image'), async (req, res) => {
     req.body.userId = req.user.userId;
     req.body.username = req.user.username;
-    req.body.image_path = req.imagePath; 
+    req.body.image_path = req.imagePath;
     const request = req.body;
     try {
         const insertData = await UploadAdminM.insertMany(request);
@@ -69,8 +68,8 @@ router.post('/uploadAdmin', authenticateToken, upload.array('image'),async (req,
             }
         }
         const updateResult = await UploadM.updateOne(filter, updateStatus);
-        console.log("insertData Success\n"+insertData);
-        res.status(201).json({ message: "success"});
+        console.log("insertData Success\n" + insertData);
+        res.status(201).json({ message: "success" });
     } catch (err) {
         console.error(err);
         res.status(500);
@@ -97,19 +96,19 @@ router.get('/upload/:postId', async (req, res) => {
         const request = await UploadM.findOne({ _id: postId });
         res.json(request);
     } catch (err) {
-        res.status(500).json({ message: err.message});
+        res.status(500).json({ message: err.message });
     }
 })
 
 router.get('/uploadAdmin/:referencePostId', async (req, res) => {
     const referencePostId = req.params.referencePostId;
-    // console.log(postId);
+    // console.log(referencePostId);
     try {
         const request = await UploadAdminM.findOne({ referencePostId: referencePostId });
-        console.log(request)
+        // console.log(request)
         res.json(request);
     } catch (err) {
-        res.status(500).json({ message: err.message});
+        res.status(500).json({ message: err.message });
     }
 })
 

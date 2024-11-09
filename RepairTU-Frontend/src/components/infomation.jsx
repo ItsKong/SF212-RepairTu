@@ -11,7 +11,7 @@ function Info() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/upload/${postId}`, { timeout: 2000 });
+                const response = await axios.get(`http://localhost:3000/api/upload/${postId}`);
                 const data = response.data;
                 setPostInfo(data);
             } catch (err) {

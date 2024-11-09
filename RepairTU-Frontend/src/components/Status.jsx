@@ -29,11 +29,18 @@ function Status() {
     console.log(pendingItems);
     console.log(repairedItems);
     // สร้าง state เพื่อเก็บสถานะปัจจุบันของสวิตช์
-    const [isRepaired, setIsRepaired] = useState(true);
+    const [isRepaired, setIsRepaired] = useState(() => sessionStorage.getItem("toggle") === "true");
+    useState(() => {
+        setIsRepaired(sessionStorage.getItem("toggle") === "true");
+    })
 
     // ฟังก์ชันจัดการการเปลี่ยนสถานะของสวิตช์
     const handleToggle = () => {
-        setIsRepaired(!isRepaired); // สลับสถานะเมื่อคลิก
+        setIsRepaired(prev => {
+            const newValue = !prev;
+            sessionStorage.setItem("toggle", newValue);
+            return newValue;
+        })
     };
 
 
@@ -86,7 +93,8 @@ function Status() {
                             {isRepaired ? (
                                 // Display items when status is "Repaired"
                                 repairedItems.map((item, index) => (
-                                    <Link to={`/Infomation/${item._id.toString()}`} key={index}>
+                                    <Link key={index} to={`/Infomation/${item._id.toString()}`}
+                                    onClick={() => {sessionStorage.setItem("status", item.status);}}>
                                         <div className="flex justify-between p-2 bg-white shadow-inner hover:shadow-gray-500">
                                             <div className="w-1/5 flex items-center justify-center">
                                                 <div className="w-20 h-20 rounded-md overflow-hidden border-2 border-gray-300 shadow-lg">
@@ -113,7 +121,8 @@ function Status() {
                             ) : (
                                 // Display items when status is "Pending Repair"
                                 pendingItems.map((item, index) => (
-                                    <Link to={`/Infomation/${item._id.toString()}`} key={index}>
+                                    <Link key={index} to={`/Infomation/${item._id.toString()}`}
+                                    onClick={() => {sessionStorage.setItem("status", item.status);}}>
                                         <div className="flex justify-between p-2 bg-white shadow-inner hover:shadow-gray-500">
                                             <div className="w-1/5 flex items-center justify-center">
                                                 <div className="w-20 h-20 rounded-md overflow-hidden border-2 border-gray-300 shadow-lg">

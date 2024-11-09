@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import swal from 'sweetalert2'
 
 function Home() {
     const navigate = useNavigate();

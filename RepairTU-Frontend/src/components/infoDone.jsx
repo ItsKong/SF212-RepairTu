@@ -10,11 +10,11 @@ function InforDone() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const userPostResponse = await axios.get(`http://localhost:3000/api/upload/${postId}`, { timeout: 2000 });
+                const userPostResponse = await axios.get(`http://localhost:3000/api/upload/${postId}`);
                 const data = userPostResponse.data;
                 setPostInfo(data);
 
-                const adminPostResponse = await axios.get(`http://localhost:3000/api/uploadAdmin/${postId}`, { timeout: 2000 })
+                const adminPostResponse = await axios.get(`http://localhost:3000/api/uploadAdmin/${postId}`)
                 const adminData = adminPostResponse.data;
                 setAdminPost(adminData);
             } catch (err) {

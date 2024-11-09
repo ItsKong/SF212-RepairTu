@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function Upload() {
   const navigate = useNavigate();
@@ -43,10 +44,24 @@ function Upload() {
     })
       .then((response) => {
         console.log('Success', response.data);
-        alert("Success")
-        navigate('/Status');
+        Swal.fire({
+          title: "Success",
+          icon: "success",
+          showConfirmButton: "OK"
+        }).then((result) => {
+          sessionStorage.setItem("toggle") === "true";
+          if(result.isConfirmed) navigate("/Status");
+        });
       })
       .catch((error) => {
+        Swal.fire({
+          title: "Error",
+          icon: "error",
+          showConfirmButton: "OK"
+        }).then((result) => {
+          sessionStorage.setItem("toggle") === "true";
+          if(result.isConfirmed) navigate("/Status");
+        });
         console.log('Error', error.message);
       });
   };

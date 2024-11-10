@@ -49,7 +49,7 @@ function Upload() {
           icon: "success",
           showConfirmButton: "OK"
         }).then((result) => {
-          sessionStorage.setItem("toggle") === "true";
+          sessionStorage.setItem("toggle", "true");
           if(result.isConfirmed) navigate("/Status");
         });
       })
@@ -59,7 +59,7 @@ function Upload() {
           icon: "error",
           showConfirmButton: "OK"
         }).then((result) => {
-          sessionStorage.setItem("toggle") === "true";
+          sessionStorage.setItem("toggle", "true");
           if(result.isConfirmed) navigate("/Status");
         });
         console.log('Error', error.message);

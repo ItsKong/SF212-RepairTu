@@ -24,7 +24,7 @@ function Login() {
         event.preventDefault();
         console.log(value);
 
-        axios.post( process.env.URL+'/api/login' , value)
+        axios.post( `{process.env.URL}/api/login` , value)
             .then((response) => {
                 console.log('Success', response.data);
                 // alert('Success')

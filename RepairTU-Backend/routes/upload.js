@@ -59,18 +59,25 @@ router.post('/uploadAdmin', authenticateToken, upload.array('image'), async (req
     req.body.userId = req.user.userId;
     req.body.username = req.user.username;
     req.body.image_path = req.imagePath;
+    const referencePostId = req.body.referencePostId;
     const request = req.body;
     try {
-        const insertData = await UploadAdminM.insertMany(request);
-        const filter = await UploadM.findOne({ _id: req.body.referentPost });
+        const filter = await UploadM.findOne({ _id: referencePostId });
+        console.log(filter)
         const updateStatus = {
             $set: {
                 status: "repaired"
             }
         }
-        const updateResult = await UploadM.updateOne(filter, updateStatus);
-        console.log("insertData Success\n" + insertData);
-        res.status(201).json({ message: "success" });
+        const updateResult = await UploadM.updateOne({ _id: referencePostId }, updateStatus);
+        if (updateResult.modifiedCount === 1) {
+            const insertData = await UploadAdminM.insertMany(request);
+            console.log("insertData Success\n" + insertData);
+            console.log("Update Data: "+(updateResult.modifiedCount === 1));
+            res.status(201).json({ message: "success" });
+        } else {
+            res.status(401).json({ message: "Error"})
+        };
     } catch (err) {
         console.error(err);
         res.status(500);

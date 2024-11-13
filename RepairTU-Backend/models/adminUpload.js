@@ -3,30 +3,30 @@ const mongoose = require('mongoose');
 const requestSchema = new mongoose.Schema({
     userId: {
         type: String,
-        default: null
+        default: ""
         // required: true
     },
     username: {
         type: String,
-        default: null
+        default: ""
         // required: true
     },
     image_path: {
         type: String,
-        default: null
+        default: ""
         // required: true
     },
     details: {
         type: String,
-        default: null
+        default: ""
     },
     major: {
         type: String,
-        default: null
+        default: ""
     },
     referencePostId: {
         type: String,
-        default: null
+        default: ""
     },
     time: {
         type: String,

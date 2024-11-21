@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+
 
 function Login() {
 
@@ -8,6 +10,8 @@ function Login() {
         studentId: '',
         password: '',
     });
+    const [isLoading, setIsLoading] = useState(false); // Check loading state
+    const [isFading, setIsFading] = useState(false); // Fade-out control
 
     //ตรวจจับ input
     const handleInputChange = (event) => {
@@ -22,7 +26,8 @@ function Login() {
     // ส่งข้อมูลด้วย json ไปยัง api
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(value);
+        // console.log(value);
+        setIsLoading(true);
 
         axios.post( `https://repairtu.onrender.com/api/login` , value)
             .then((response) => {
@@ -42,6 +47,11 @@ function Login() {
             })
             // จับ error
             .catch((error) => {
+                Swal.fire({
+                    title: `${error.response.data.message}`,
+                    icon: "error",
+                    showConfirmButton: "Ok"
+                })
                 setError(error.response ? error.response.data.message : 'Something went wrong');
                 setIsLoading(false);
             });

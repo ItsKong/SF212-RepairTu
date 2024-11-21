@@ -6,12 +6,13 @@ function Logout() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.post("https://repairtu.onrender.com/api/logout", {}, { timeout: 5000 })
+        axios.post("https://repairtu.onrender.com/logout", {}, { timeout: 5000 })
             .then(response => {
                 console.log(response.data.message);
                 localStorage.removeItem('accessToken');
                 localStorage.removeItem('refreshToken');
                 localStorage.removeItem('role');
+                localStorage.removeItem('username');
                 navigate('/');
             }).catch(error => {
                 console.log("Logout failed: ", error)

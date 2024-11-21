@@ -11,8 +11,8 @@ router.post('/login', async (req, res) => {
         // check user exit?
         // console.log(req.body)
         const check = await UsersMD.findOne({ studentId: req.body.studentId });
-        console.log(check)
-        console.log("Username: "+check.username);
+        // console.log(check)
+        // console.log("Username: "+check.username);
         if (!check) {
             res.status(404).json({ message: "ID not found." });
         }

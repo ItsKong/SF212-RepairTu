@@ -11,11 +11,11 @@ router.post('/login', async (req, res) => {
         // check user exit?
         // console.log(req.body)
         const check = await UsersMD.findOne({ studentId: req.body.studentId });
-        // console.log(check)
+        console.log(check)
+        console.log("Username: "+check.username);
         if (!check) {
             res.status(404).json({ message: "ID not found." });
         }
-        // console.log(check.username)
         else if (check.password === req.body.password) {
 
             //user autherization
@@ -25,9 +25,8 @@ router.post('/login', async (req, res) => {
 
             //refreshToken store in database for each user
             // await insertRefreshToken(refreshToken, check._id.toString());
-
             //accessToken always store in client side
-            res.json({ accessToken: accessToken, refreshToken: refreshToken, role: check.role});
+            res.json({ accessToken: accessToken, refreshToken: refreshToken, role: check.role, username: check.username});
         } else {
             res.status(401).json({ message: "Password incorect." });
         }

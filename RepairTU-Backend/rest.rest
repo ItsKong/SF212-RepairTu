@@ -7,7 +7,7 @@ Content-Type: application/json
 // front end login json model use student id 
 
 {
-    "studentId": "1234567890",
+    "studentId": "123456789",
     "password": "1234"
 }
 

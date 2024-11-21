@@ -31,21 +31,32 @@ function Login() {
                 localStorage.setItem("accessToken", response.data.accessToken,);
                 localStorage.setItem("refreshToken", response.data.refreshToken);
                 localStorage.setItem("role", response.data.role);
+                localStorage.setItem("username", response.data.username);
                 //ย้ายไปหน้า home
-                window.location.href = '/Home';
+                setTimeout(() => {
+                    setIsFading(true);
+                    setTimeout(() => {
+                        window.location.href = '/Home'; // Redirect to Home after fading
+                    }, 600);
+                }, 2000);
             })
             // จับ error
             .catch((error) => {
-                if (error.response) {
-                    console.log('Server Error', error.response.data);
-                    alert(error.response.data.message)
-                } else if (error.request) {
-                    console.log('Network Error', error.request);
-                } else {
-                    console.log('Error', error.message);
-                }
+                setError(error.response ? error.response.data.message : 'Something went wrong');
+                setIsLoading(false);
             });
     };
+
+    if (isLoading) {
+        // During loading, show loading spinner
+        return (
+            <div className={`flex flex-col items-center justify-center h-screen bg-white transition-opacity duration-1000 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
+                <i className="text-[10vw] text-red-400 fa-solid fa-screwdriver-wrench animate-spin"></i>
+                <p className="text-red text-[4vw] font-bold mt-4">Welcome!</p>
+                <p className="text-[#340000] font-bold text-[5vw] leading-none max-md:text-[15vw]">{localStorage.getItem('username')}</p>
+            </div>
+        );
+    }
 
     return (
         <>

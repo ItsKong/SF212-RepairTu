@@ -8,6 +8,9 @@ module.exports = {
     extend: {
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
+        anakotmai: ['Anakotmai', 'sans-serif'],
+        kanit: ['Kanit', 'sans-serif'],
+        sans: ['Kanit', 'sans-serif'],
       },
     },
   },

@@ -68,12 +68,11 @@ function Upload() {
 
   return (
     <>
-      <div className="font-inter">
-        <h1 className="font-inter mt-4 ml-[5vw] text-[4.5rem] font-bold text-[#340000] max-lg:text-[2rem] ">INFORMATION</h1>
+        <h1 className=" mt-4 ml-[5vw] text-[4.5rem] font-bold text-[#340000] max-lg:text-[2rem] ">INFORMATION</h1>
         <form className="justify-center flex max-xl:grid max-xl:grid-cols-1" onSubmit={handleSubmit}>
-          <div className="flex item-center justify-center w-full h-[50rem] max-xl:h-[30rem] max-lg:w-full ">
+          <div className="flex item-center justify-center w-full h-[45rem] max-xl:h-[30rem] w-1/2 ">
             {/* กำหนดพื้นหลังเป็นภาพที่ผู้ใช้อัปโหลด */}
-            <label htmlFor="dropzone-file"
+            <label htmlFor="dropzone-file" 
               className="flex flex-col items-center justify-center h-auto w-full mx-5 mb-[2rem] mt-[3rem] border rounded-[35px] cursor-pointer hover:bg-gray-300 border-4 border-dashed border-red-600"
               style={{
                 backgroundImage: preview ? `url(${preview})` : 'none', // ตั้งพื้นหลังเป็นภาพที่อัปโหลด
@@ -90,21 +89,25 @@ function Upload() {
                   </>
                 )}
               </div>
-              <input id="dropzone-file" type="file" className="hidden" onChange={handleFileChange} />
+              <input id="dropzone-file" type="file" className="hidden" onChange={handleFileChange} required />
             </label>
           </div>
 
-          <div className="mt-[3rem] p-4 w-1/3 max-xl:w-full max-xl:mt-1">
+          <div className="mt-[3rem] p-4 w-2/5 max-xl:w-full max-xl:mt-1">
             <div className="bg-gradient-to-b from-[#FF0000] to-[#FFD705] shadow-2xl item-center mx-5 mb-5 rounded-3xl p-4">
               {/* ฟอร์มกรอกข้อมูล */}
               <div className="mb-5">
                 <label className="text-white block mb-2 text-lg font-medium">สถานที่</label>
                 <select name="location" onChange={handleInputChange} value={value.location} className="shadow-sm bg-white border border-gray-300 text-gray-900 rounded-lg w-full p-2.5" required>
-                  <option value="">เลือกสถานที่</option>
-                  <option value="Engr">วิศวะ</option>
-                  <option value="Sc">Sc</option>
-                  <option value="Jc">Jc</option>
-                  <option value="Hospital">โรงพยาบาล</option>
+                <option value="">เลือกสถานที่</option>
+                  <option value="SIIT">SIIT</option>
+                  <option value="วิศวะ">คณะวิศวกรรมศาสตร์</option>
+                  <option value="วิศวะ">หอสมุดป๋วย</option>
+                  <option value="SC">SC</option>
+                  <option value="SC3">SC3</option>
+                  <option value="โรงอาหาร SC">โรงอาหาร SC</option>
+                  <option value="โรงอาหาร J ฉ">โรงอาหาร JC</option>
+                  <option value="โรงพยาบาล">โรงพยาบาล</option>
                 </select>
               </div>
               <div className="mb-5">
@@ -113,17 +116,16 @@ function Upload() {
               </div>
               <div className="mb-5">
                 <label className="block mb-2 text-lg font-medium text-white">รายละเอียดเพิ่มเติม</label>
-                <textarea name="details" onChange={handleInputChange} value={value.details} className="shadow-sm bg-white border border-gray-300 text-gray-900 rounded-lg w-full p-2.5 h-64" placeholder="ใส่รายละเอียด"></textarea>
+                <textarea name="details" onChange={handleInputChange} value={value.details} className="shadow-sm bg-white border border-gray-300 text-gray-900 rounded-lg w-full p-2.5 h-64" placeholder="ใส่รายละเอียด สถานที่ ตำแหน่งของ สิ่งที่ต้องการแก้ไข"></textarea>
               </div>
               <div className="mb-5 text-center">
-                <button className="shadow bg-red-500 text-white hover:bg-red-400 font-bold py-2 px-4 rounded" type="submit">
+                <button className="hover:scale-110  duration-500 shadow bg-red-500 text-white hover:bg-red-400 font-bold py-2 px-4 rounded" type="submit">
                   Submit
                 </button>
               </div>
             </div>
           </div>
         </form>
-      </div>
     </>
   );
 }

@@ -101,12 +101,12 @@ function Upload() {
                 <select name="location" onChange={handleInputChange} value={value.location} className="shadow-sm bg-white border border-gray-300 text-gray-900 rounded-lg w-full p-2.5" required>
                 <option value="">เลือกสถานที่</option>
                   <option value="SIIT">SIIT</option>
-                  <option value="วิศวะ">คณะวิศวกรรมศาสตร์</option>
-                  <option value="วิศวะ">หอสมุดป๋วย</option>
+                  <option value="คณะวิศวกรรมศาสตร์">คณะวิศวกรรมศาสตร์</option>
+                  <option value="หอสมุดป๋วย">หอสมุดป๋วย</option>
                   <option value="SC">SC</option>
                   <option value="SC3">SC3</option>
                   <option value="โรงอาหาร SC">โรงอาหาร SC</option>
-                  <option value="โรงอาหาร J ฉ">โรงอาหาร JC</option>
+                  <option value="โรงอาหาร JC">โรงอาหาร JC</option>
                   <option value="โรงพยาบาล">โรงพยาบาล</option>
                 </select>
               </div>

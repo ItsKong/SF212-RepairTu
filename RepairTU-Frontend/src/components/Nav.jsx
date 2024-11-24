@@ -94,11 +94,11 @@ function Nav() {
                 สถานะ
               </Link>
             </li>
-            <li>
+            {!isLoginPage && <li>
               <Link to="/logout" className="hover:text-orange-300 border duration-500 px-5 py-1 bg-red-500 text-white rounded-lg">
                 ออกจากระบบ
               </Link>
-            </li>
+            </li>}
           </ul>
         )}
       </nav>

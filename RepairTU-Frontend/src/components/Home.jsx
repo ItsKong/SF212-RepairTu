@@ -37,9 +37,9 @@ function Home() {
 
                     <div className="flex flex-col items-center w-full h-96 justify-center ">
 
-                        <div className="flex flex-col items-center w-full h-96 justify-center ">
-                            <i className="text-[10rem] sm:text-[20rem] xl:text-[30rem] text-[#340000] fa-solid fa-screwdriver-wrench mb-5"></i>
-                            <Link onClick={handleClick} ><button className="hover:scale-110 duration-500 w-xl h-12 sm:w-60 sm:h-14 font-black m-5 bg-[#E20B0B] text-white rounded-3xl hover:opacity-80 hover:text-orange-300 shadow-lg shadow-black/35 text-2xl">เริ่มต้นใช้งาน</button></Link>
+                    <div className="flex flex-col items-center w-full h-96 justify-center ">
+                            <i className="text-[10rem]  sm:text-[20rem] xl:text-[30rem] text-[#340000] fa-solid fa-screwdriver-wrench mb-5"></i>
+                            <Link onClick={handleClick} ><button className="hover:scale-110 duration-500 w-xl h-12 w-[100px] md:w-60 sm:text-xs sm:h-14 font-black m-5 bg-[#E20B0B] text-white rounded-3xl hover:opacity-80 hover:text-orange-300 shadow-lg shadow-black/35 lg:text-2xl">เริ่มต้นใช้งาน</button></Link>
                         </div>
                     </div>
                 </div>

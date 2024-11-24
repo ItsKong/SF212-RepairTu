@@ -47,13 +47,14 @@ function Login() {
             })
             // จับ error
             .catch((error) => {
+
                 Swal.fire({
                     title: `${error.response.data.message}`,
                     icon: "error",
                     showConfirmButton: "Ok"
                 })
-                setError(error.response ? error.response.data.message : 'Something went wrong');
                 setIsLoading(false);
+                setError(error.response ? error.response.data.message : 'Something went wrong');
             });
     };
 

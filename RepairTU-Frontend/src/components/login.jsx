@@ -27,7 +27,7 @@ function Login() {
     const handleSubmit = (event) => {
         event.preventDefault();
         // console.log(value);
-        setIsLoading(true);
+        setIsLoading(false);
 
         axios.post( `https://repairtu.onrender.com/api/login` , value)
             .then((response) => {
@@ -38,6 +38,7 @@ function Login() {
                 localStorage.setItem("role", response.data.role);
                 localStorage.setItem("username", response.data.username);
                 //ย้ายไปหน้า home
+                setIsLoading(true);
                 setTimeout(() => {
                     setIsFading(true);
                     setTimeout(() => {
@@ -47,13 +48,12 @@ function Login() {
             })
             // จับ error
             .catch((error) => {
-
+                setIsLoading(false);
                 Swal.fire({
                     title: `${error.response.data.message}`,
                     icon: "error",
                     showConfirmButton: "Ok"
                 })
-                setIsLoading(false);
                 setError(error.response ? error.response.data.message : 'Something went wrong');
             });
     };
